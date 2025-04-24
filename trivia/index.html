@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function checkAnswers() {
+                const mcqAnswer = document.querySelector('input[name="mcq"]:checked');
+                const mcqResult = document.getElementById('mcqResult');
+
+                if (mcqAnswer) {
+                    if (mcqAnswer.value === 'correct') {
+                        mcqResult.textContent = 'Correct!';
+                        mcqResult.style.color = 'green';
+                    } else {
+                        mcqResult.textContent = 'Incorrect. Try again!';
+                        mcqResult.style.color = 'red';
+                    }
+                } else {
+                    mcqResult.textContent = 'Please select an answer.';
+                    mcqResult.style.color = 'orange';
+                }
+
+                const freeResponse = document.getElementById('freeResponse').value.trim();
+                const freeResponseResult = document.getElementById('freeResponseResult');
+                const correctAnswer = 'Quaid e Azam';
+                if (freeResponse.toLowerCase() === correctAnswer.toLowerCase()) {
+                    freeResponseResult.textContent = 'Correct!';
+                    freeResponseResult.style.color = 'green';
+                } else {
+                    freeResponseResult.textContent = 'Incorrect. The correct answer is "' + correctAnswer + '".';
+                    freeResponseResult.style.color = 'red';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <p>What is the national language of Pakistan?</p>
+                <label><input type="radio" name="mcq" value="incorrect"> Punjabi</label><br>
+                <label><input type="radio" name="mcq" value="correct"> Urdu</label><br>
+                <label><input type="radio" name="mcq" value="incorrect"> Sindhi</label><br>
+                <label><input type="radio" name="mcq" value="incorrect"> Pashto</label><br>
+                <p id="mcqResult" style="font-weight: bold;"></p>
+
+                <p>Who is known as the national poet of Pakistan?</p>
+                <label><input type="radio" name="mcq2" value="correct"> Allama Iqbal</label><br>
+                <label><input type="radio" name="mcq2" value="incorrect"> Faiz Ahmed Faiz</label><br>
+                <label><input type="radio" name="mcq2" value="incorrect"> Ahmed Faraz</label><br>
+                <label><input type="radio" name="mcq2" value="incorrect"> Mirza Ghalib</label><br>
+                <p id="mcqResult2" style="font-weight: bold;"></p>
+
+                <p>Which city is known as the "City of Lights" in Pakistan?</p>
+                <label><input type="radio" name="mcq3" value="correct"> Karachi</label><br>
+                <label><input type="radio" name="mcq3" value="incorrect"> Lahore</label><br>
+                <label><input type="radio" name="mcq3" value="incorrect"> Islamabad</label><br>
+                <label><input type="radio" name="mcq3" value="incorrect"> Peshawar</label><br>
+                <p id="mcqResult3" style="font-weight: bold;"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <p>What is the name of the founder of Pakistan?</p>
+                <input type="text" id="freeResponse" placeholder="Enter your answer here">
+                <p id="freeResponseResult" style="font-weight: bold;"></p>
+            </div>
+
+            <button onclick="checkAnswers()">Submit Answers</button>
+        </div>
+    </body>
+</html>
